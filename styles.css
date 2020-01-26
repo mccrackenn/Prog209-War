@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+    color:red;
+    text-transform: capitalize;
+}
+
+#deal {
+    display:none;
+} 
+
+#start {
+    display:block;
+}
+
+#playerSpan {
+    display:none;
+}
+
+#computerSpan {
+    display:none;
+}
