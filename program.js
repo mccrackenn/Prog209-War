@@ -15,10 +15,11 @@ let game={
     buttonClicked:function() {
         deck.loadDeck();
         deck.cardArray.shuffle();
-
+        console.log(computerArray);
+        console.log(playerArray);
         deal.style.display='block';
         start.style.display='none';
-
+        
     },
     getName:function(theRank){
         switch(theRank) {
@@ -62,7 +63,15 @@ let game={
             computerTotal++;
             computerScore.textContent=computerTotal;
         }else{
-            console.log("tie!");
+            if(p[i].suit<c[i].suit){
+            playerTotal++;
+            playerScore.textContent=playerTotal;
+            console.log("tie!,high suit trumps!");
+            }else{
+            computerTotal++;
+            computerScore.textContent=computerTotal;
+            console.log("tie!,high suit trumps!");
+            }
         }
             
         return i;
