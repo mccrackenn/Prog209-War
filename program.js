@@ -6,28 +6,73 @@ document.addEventListener("DOMContentLoaded", function (event) {
         game.dealClicked();
     })
 });
-
+index=0;
+playerTotal=0;
+computerTotal=0;
 
 let game={
-    turnNumber:1,
+    turnNumber:0,
     buttonClicked:function() {
         deck.loadDeck();
         deck.cardArray.shuffle();
+
         deal.style.display='block';
         start.style.display='none';
-        
+
+    },
+    getName:function(theRank){
+        switch(theRank) {
+            case 11:return "Jack";
+            case 12:return "Queen";
+            case 13:return "King";
+            case 14:return "Ace";
+            default: return theRank;
+        }
+    },
+    getSuit:function(suit){
+        switch(suit) {
+            case 1:return "Spades";
+            case 2:return "Diamonds";
+            case 3:return "Hearts";
+            case 4:return "Clubs";
+            default:return suit;
+        }
     },
     dealClicked:function(){
+       
         let turnNumberCount=document.getElementById('turnNumberCount');
-        //console.log(deck.cardArray);
-        turnNumberCount.textContent=this.turnNumber++;
-        
+        this.turnNumber++;
+        turnNumberCount.textContent=this.turnNumber;
+        playerSpan.style.display='block';
+        playerSpan.textContent=this.getName(playerArray[index].rank)+" of "+this.getSuit(playerArray[index].suit);
+        computerSpan.style.display='block';
+        computerSpan.textContent=this.getName(computerArray[index].rank)+" of "+this.getSuit(computerArray[index].suit);
+        let getScore=this.checkIt(playerArray,computerArray,index);
+        index++;
+        console.log(index);
+
+    },
+    checkIt:function(p, c, i){
+        if(p[i].rank>c[i].rank) {
+            console.log("player wins");
+            playerTotal++;
+            playerScore.textContent=playerTotal;
+        }else if(p[i].rank<c[i].rank){
+            console.log("computer wins!");
+            computerTotal++;
+            computerScore.textContent=computerTotal;
+        }else{
+            console.log("tie!");
+        }
+            
+        return i;
     }
 }
 
 
-let playerScore=document.getElementById('playerScore');
-let computerScore=document.getElementById('computerScore')
+
+
+
 
 
 

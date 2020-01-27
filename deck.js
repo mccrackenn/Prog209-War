@@ -40,8 +40,13 @@ for(k=0;k<this.length;k++){
         
         
     }
-    return computerArray, playerArray;
+    return playerArray, computerArray;
 }
+    //console.log(computerArray[0]);
+    //return computerArray, playerArray;
+    //console.log(computerArray,playerArray);
+
+
 
 
 //deck.cardArray.shuffle();

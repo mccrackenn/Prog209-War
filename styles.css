@@ -19,3 +19,14 @@ h1 {
 #computerSpan {
     display:none;
 }
+#playerScore{
+    display:block;
+}
+#computerScore {
+    display:block;
+    font-size: 20px;
+}
+.playerColor{
+    color:red
+
+}
