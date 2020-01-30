@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         playerTotal = 0;
         computerTotal = 0;
         turnNumberCount.textContent=0;
-
+        
     });
     document.getElementById('deal').addEventListener('click', function () {
         game.dealClicked();
