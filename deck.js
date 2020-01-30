@@ -35,45 +35,12 @@ Array.prototype.shuffle = function () {
     }
     return playerArray, computerArray;
 }
-    //console.log(computerArray[0]);
-    //return computerArray, playerArray;
-    //console.log(computerArray,playerArray);
-
-
-
-
-//deck.cardArray.shuffle();
-//console.log(deck.cardArray);
+ 
 
 
 
 
 
 
-// shuffle:function(cardArray){
-//     let input=this;
 
-// for(let n=deck.cardArray.length -1; n > 0; n--){
-// let random=Math.floor(Math.random()*52);
-// let temp=input[random];
-// input[random]=input[i];
-// input[i]=temp;
-// }
-// return input;
-// }
 
-//array1=[];
-// array2=[];
-
-// console.log(deck.cardArray);
-// for(k=0;k<deck.cardArray.length;k++){
-//     if (k % 2===0) {
-//         //console.log('even');
-//         array1.push(k);
-//     }else{
-//         //console.log('odd');
-//         array2.push(k);
-//         }
-//     }
-//  console.log(array1)   ;
-//  console.log(array2);
