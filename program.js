@@ -1,26 +1,31 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById('start').addEventListener('click', function () {
         game.buttonClicked();
+        index = 0;
+        playerTotal = 0;
+        computerTotal = 0;
+        turnNumberCount.textContent=0;
+
     });
     document.getElementById('deal').addEventListener('click', function () {
         game.dealClicked();
     })
 });
-index = 0;
-playerTotal = 0;
-computerTotal = 0;
 
 
 let game = {
-    turnNumber: 0,
+
     buttonClicked: function () {
+        turnNumberCount.textContent=0;
+        computerScore.textContent = 0;
+        playerScore.textContent = 0;
         deck.loadDeck();
         deck.cardArray.shuffle();
-        console.log(playerArray);
-        console.log(computerArray);
         deal.style.display = 'block';
         start.style.display = 'none';
-
+        handResult.textContent="";
+        playerSpan.textContent='';
+        computerSpan.textContent='';
     },
     getName: function (theRank) {
         switch (theRank) {
@@ -42,14 +47,8 @@ let game = {
     },
     dealClicked: function () {
 
-        if (index === 25) {
-            if()
-            console.log("game over");
-            deal.style.display = 'none';
-        }
         let turnNumberCount = document.getElementById('turnNumberCount');
-        this.turnNumber++;
-        turnNumberCount.textContent = this.turnNumber;
+        turnNumberCount.textContent = index + 1;
         playerSpan.style.display = 'block';
         playerSpan.textContent = this.getName(playerArray[index].rank) + " of " + this.getSuit(playerArray[index].suit);
         if (this.getSuit(playerArray[index].suit === 2) || this.getSuit(playerArray[index].suit === 3)) {
@@ -66,8 +65,19 @@ let game = {
         }
         this.checkIt(playerArray, computerArray, index);
         index++;
+        if (index === 26) {
+            deal.style.display = 'none';
+            if (playerTotal > computerTotal) {
+                handResult.textContent = "Game Over, You Won This Round!";
+            } else if (playerTotal < computerTotal) {
+                handResult.textContent = "Game Over, Computer Won This Round!";
+            } else {
+                handResult.textContent = "Game Over, This Round is a tie!";
+            }
+            start.style.display = 'block';
+            deck.cardArray.length=0;
 
-        //console.log(index);
+        }
 
     },
     checkIt: function (p, c, i) {
@@ -75,29 +85,27 @@ let game = {
             console.log("player wins");
             playerTotal++;
             playerScore.textContent = playerTotal;
-            handResult.textContent='You win this Hand!';
+            handResult.textContent = 'You win this Hand!';
         } else if (p[i].rank < c[i].rank) {
             console.log("computer wins!");
             computerTotal++;
             computerScore.textContent = computerTotal;
-            handResult.textContent="Computer Wins this Hand!";
+            handResult.textContent = "Computer Wins this Hand!";
         } else {
             if (p[i].suit < c[i].suit) {
                 playerTotal++;
                 playerScore.textContent = playerTotal;
                 console.log("tie!,high suit trumps!");
-                handResult.textContent="Tie on Rank, by Suit You win this Hand!";
+                handResult.textContent = "Tie on Rank, by Suit You win this Hand!";
             } else {
                 computerTotal++;
                 computerScore.textContent = computerTotal;
                 console.log("tie!,high suit trumps!");
-                handResult.textContent="Tie on Rank, by Suit Computer Wins this Hand!";
+                handResult.textContent = "Tie on Rank, by Suit Computer Wins this Hand!";
             }
         }
 
     },
-
-
 
 }
 

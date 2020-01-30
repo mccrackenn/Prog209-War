@@ -9,7 +9,6 @@ let deck = {
 
         }
     }
-
 }
 
 Array.prototype.shuffle = function () {
